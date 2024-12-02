@@ -1,0 +1,10 @@
+package view;
+
+import controller.*;
+
+public class Main{
+	public static void main(String[] args){
+		GrafoMatrizController g = new GrafoMatrizController();
+		System.out.println(g.teste());
+	}
+}
