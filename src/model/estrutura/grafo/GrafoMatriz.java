@@ -20,11 +20,17 @@ public class GrafoMatriz<T>{
 		this.matriz[index_label1][index_label2] = 1;
 	}
 	
+	private int k = 0;
 	public void add(String[] caminho){
+		/*
+		 * Aqui é definido i = 1 para que não haja estouro no [i-1]
+		 * Dessa forma os itens corretos são enviados para link e alocados no vetor de itens existentes
+		 */
 		for(int i = 1; i < caminho.length; i++){
 			if(!Arrays.asList(existentes).contains(caminho[i])){
 				this.link(caminho[i-1], caminho[i]);
-				existentes[i-1] = caminho[i-1];
+				existentes[k] = caminho[i];
+				k++;
 			}
 		}
 	}
@@ -32,7 +38,7 @@ public class GrafoMatriz<T>{
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < this.labels.length; i++) {
+		for (int i = 0; i < 4; i++) {
 			builder.append(this.labels[i] + ": ");
 			for (int j = 0; j < this.labels.length; j++) {
 				if (this.matriz[i][j] == 1) {
